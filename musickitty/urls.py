@@ -19,10 +19,11 @@ from django.conf.urls import include
 from django.urls import path
 from musickittyapi.views import register_user, login_user
 from rest_framework import routers
-from musickittyapi.views import LocationView
+from musickittyapi.views import LocationView, CatView
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'locations', LocationView, 'location')
+router.register(r'cats', CatView, 'cat')
 
 urlpatterns = [
     path('register', register_user),
