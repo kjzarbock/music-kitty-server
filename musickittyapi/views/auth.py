@@ -6,7 +6,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
-from musickittyapi.models import Profile  
+from musickittyapi.models import Profile
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
@@ -36,6 +36,8 @@ def register_user(request):
     first_name = request.data.get('first_name', None)
     last_name = request.data.get('last_name', None)
     password = request.data.get('password', None)
+    bio = request.data.get('bio', '')
+    image = request.data.get('image', '')
 
     if account_type is not None \
             and email is not None\
@@ -57,7 +59,11 @@ def register_user(request):
                 first_name=first_name,
                 last_name=last_name
             )
-            Profile.objects.create(user=new_user)
+            Profile.objects.create(
+                user=new_user,
+                bio=bio,
+                image=image
+            )
 
         except IntegrityError:
             return Response(

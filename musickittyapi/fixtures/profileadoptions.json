@@ -1,0 +1,12 @@
+[
+    {
+        "model": "musickittyapi.profileadoption",
+        "pk": 1,
+        "fields": {
+            "profile": 1,
+            "cat": 1,
+            "adoption_date": "2023-09-20",
+            "status": "Pending"
+        }
+    }
+]

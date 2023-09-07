@@ -1,0 +1,74 @@
+[
+    {
+        "model": "musickittyapi.profile",
+        "pk": 1,
+        "fields": {
+            "image": "https://i.imgur.com/e3jsYQd.jpg",
+            "bio": "Software Developer | Feline Enthusiast",
+            "has_cats": true,
+            "has_dogs": true,
+            "has_children": false,
+            "approved_to_adopt": false
+        }
+    },
+    {
+        "model": "musickittyapi.profile",
+        "pk": 2,
+        "fields": {
+            "image": "https://i.imgur.com/wVVzzsC.jpg",
+            "bio": "Entrepreneur | Cat Lover",
+            "has_cats": true,
+            "has_dogs": true,
+            "has_children": false,
+            "approved_to_adopt": false
+        }
+    },
+    {
+        "model": "musickittyapi.profile",
+        "pk": 3,
+        "fields": {
+            "image": "https://i.imgur.com/EmSkYpF.jpg",
+            "bio": "Songwriter",
+            "has_cats": true,
+            "has_dogs": false,
+            "has_children": false,
+            "approved_to_adopt": false
+        }
+    },
+    {
+        "model": "musickittyapi.profile",
+        "pk": 4,
+        "fields": {
+            "image": "https://i.imgur.com/gavgjuZ.jpg",
+            "bio": "Juicy boi. I love cats",
+            "has_cats": true,
+            "has_dogs": true,
+            "has_children": false,
+            "approved_to_adopt": false
+        }
+    },
+    {
+        "model": "musickittyapi.profile",
+        "pk": 5,
+        "fields": {
+            "image": "https://i.imgur.com/dHMhSFe.jpg",
+            "bio": "Musician",
+            "has_cats": true,
+            "has_dogs": true,
+            "has_children": false,
+            "approved_to_adopt": false
+        }
+    },
+    {
+        "model": "musickittyapi.profile",
+        "pk": 6,
+        "fields": {
+            "image": "https://i.imgur.com/XDqN81R.jpg",
+            "bio": "Music Producer",
+            "has_cats": true,
+            "has_dogs": true,
+            "has_children": false,
+            "approved_to_adopt": false
+        }
+    }
+]

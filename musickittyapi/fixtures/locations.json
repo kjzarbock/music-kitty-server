@@ -1,0 +1,58 @@
+[
+    {
+        "model": "musickittyapi.location",
+        "pk": 1,
+        "fields": {
+            "name": "Music Kitty Downtown",
+            "address": "205 Demonbreun Street, 2nd Ave S, Nashville, TN 37201",
+            "phone_number": "555-456-7890",
+            "opening_hours": "11:00am",
+            "closing_hours": "08:00pm"
+        }
+    },
+    {
+        "model": "musickittyapi.location",
+        "pk": 2,
+        "fields": {
+            "name": "Music Kitty East",
+            "address": "107 S 11th St, Nashville, TN 37206",
+            "phone_number": "555-867-5309",
+            "opening_hours": "11:00am",
+            "closing_hours": "08:00pm"
+        }
+    },
+    {
+        "model": "musickittyapi.location",
+        "pk": 3,
+        "fields": {
+            "name": "Music Kitty 12 South",
+            "address": "2509 12th Ave S, Nashville, TN 37204",
+            "phone_number": "555-481-3625",
+            "opening_hours": "11:00am",
+            "closing_hours": "08:00pm"
+        }
+    },
+    {
+        "model": "musickittyapi.location",
+        "pk": 4,
+        "fields": {
+            "name": "Music Kitty Nolensville",
+            "address": "7216 Nolensville Rd Suite 110, Nolensville, TN 37135",
+            "phone_number": "555-339-9405",
+            "opening_hours": "11:00am",
+            "closing_hours": "08:00pm"
+        }
+    },
+    {
+        "model": "musickittyapi.location",
+        "pk": 5,
+        "fields": {
+            "name": "Music Kitty South",
+            "address": "6444 Nolensville Pk, Nashville, TN 37013",
+            "phone_number": "555-819-0396",
+            "opening_hours": "11:00am",
+            "closing_hours": "08:00pm"
+        }
+    }
+    
+]

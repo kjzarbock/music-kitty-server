@@ -1,0 +1,13 @@
+[
+    {
+        "model": "musickittyapi.reservation",
+        "pk": 1,
+        "fields": {
+            "profile": 1,
+            "location": 1,
+            "date": "2023-09-10",
+            "time": "15:00:00",
+            "number_of_guests": 3
+        }
+    }
+]

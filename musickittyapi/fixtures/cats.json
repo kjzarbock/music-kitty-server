@@ -1,0 +1,98 @@
+[
+    {
+        "model": "musickittyapi.cat",
+        "pk": 1,
+        "fields": {
+            "location": 1,
+            "name": "Olivia",
+            "age": "2 years",
+            "sex": "Female",
+            "bio": "Friendly and playful",
+            "image": "https://i.imgur.com/LIvfKXx.jpg",
+            "adopted": false,
+            "gets_along_with_cats": true,
+            "gets_along_with_dogs": true,
+            "gets_along_with_children": true
+        }
+    },
+    {
+        "model": "musickittyapi.cat",
+        "pk": 2,
+        "fields": {
+            "location": 1,
+            "name": "Clawlor Swift",
+            "age": "6 months",
+            "sex": "Female",
+            "bio": "Musically talented",
+            "image": "https://i.imgur.com/ESSZRrO.jpg",
+            "adopted": false,
+            "gets_along_with_cats": true,
+            "gets_along_with_dogs": false,
+            "gets_along_with_children": true
+        }
+    },
+    {
+        "model": "musickittyapi.cat",
+        "pk": 3,
+        "fields": {
+            "location": 1,
+            "name": "August",
+            "age": "3 years",
+            "sex": "Male",
+            "bio": "Lazy and sweet",
+            "image": "https://i.imgur.com/dRk0TYZ.jpg",
+            "adopted": false,
+            "gets_along_with_cats": true,
+            "gets_along_with_dogs": true,
+            "gets_along_with_children": false
+        }
+    },
+    {
+        "model": "musickittyapi.cat",
+        "pk": 4,
+        "fields": {
+            "location": 1,
+            "name": "Betty",
+            "age": "4 years",
+            "sex": "Female",
+            "bio": "Loyal and cuddly",
+            "image": "https://i.imgur.com/O0oxUSx.jpg",
+            "adopted": false,
+            "gets_along_with_cats": true,
+            "gets_along_with_dogs": true,
+            "gets_along_with_children": true
+        }
+    },
+    {
+        "model": "musickittyapi.cat",
+        "pk": 5,
+        "fields": {
+            "location": 1,
+            "name": "Benjamin",
+            "age": "6 months",
+            "sex": "Male",
+            "bio": "Curious",
+            "image": "https://i.imgur.com/Dw9lZTN.jpg",
+            "adopted": false,
+            "gets_along_with_cats": true,
+            "gets_along_with_dogs": false,
+            "gets_along_with_children": true
+        }
+    },
+    {
+        "model": "musickittyapi.cat",
+        "pk": 6,
+        "fields": {
+            "location": 1,
+            "name": "James",
+            "age": "8 months",
+            "sex": "Male",
+            "bio": "Frisky",
+            "image": "whiskers_image_url.jpg",
+            "adopted": false,
+            "gets_along_with_cats": true,
+            "gets_along_with_dogs": true,
+            "gets_along_with_children": true
+        }
+    }
+]

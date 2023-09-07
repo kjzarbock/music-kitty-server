@@ -1,0 +1,10 @@
+[
+    {
+        "model": "musickittyapi.catfavorite",
+        "pk": 1,
+        "fields": {
+            "profile": 1,
+            "cat": 1
+        }
+    }
+]
