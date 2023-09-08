@@ -79,7 +79,7 @@ class ReservationProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Profile
-        fields = ('user', 'image', 'bio', 'has_cats', 'has_dogs', 'has_children', 'approved_to_adopt')
+        fields = ('user', 'has_cats', 'has_dogs', 'has_children', 'approved_to_adopt')
 
 
 class ReservationLocationSerializer(serializers.ModelSerializer):
