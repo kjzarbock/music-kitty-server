@@ -7,8 +7,9 @@ class Cat(models.Model):
     age = models.CharField(max_length=255)
     sex = models.CharField(max_length=255)
     bio = models.TextField()
-    image = models.CharField(max_length=255)
+    image = models.CharField(max_length=255)  # If storing URLs. Consider ImageField if storing actual images.
     adopted = models.BooleanField()
     gets_along_with_cats = models.BooleanField()
     gets_along_with_dogs = models.BooleanField()
     gets_along_with_children = models.BooleanField()
+    favoried_by = models.ManyToManyField("Profile", through='CatFavorite', related_name="favorited_cats_through")
