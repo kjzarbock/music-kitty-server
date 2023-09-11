@@ -3,7 +3,7 @@ from django.conf.urls import include
 from django.urls import path
 from musickittyapi.views import register_user, login_user
 from rest_framework import routers
-from musickittyapi.views import LocationView, CatView, ProductView, ProfileView, ReservationView, CatFavoriteView
+from musickittyapi.views import LocationView, CatView, ProductView, ProfileView, ReservationView, CatFavoriteView, ProfileAdoptionView
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'locations', LocationView, 'location')
@@ -12,6 +12,7 @@ router.register(r'products', ProductView, 'product')
 router.register(r'profiles', ProfileView, 'profile')
 router.register(r'reservations', ReservationView, 'reservation')
 router.register(r'cat-favorites', CatFavoriteView, 'catfavorite')
+router.register(r'profile-adoptions', ProfileAdoptionView, 'profileadoption')
 
 # Extending the URL patterns of the router.
 profile_list = ProfileView.as_view({
