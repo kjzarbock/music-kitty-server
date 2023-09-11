@@ -31,25 +31,20 @@ def login_user(request):
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def register_user(request):
-    account_type = request.data.get('account_type', None)
     email = request.data.get('email', None)
     first_name = request.data.get('first_name', None)
     last_name = request.data.get('last_name', None)
     password = request.data.get('password', None)
     bio = request.data.get('bio', '')
     image = request.data.get('image', '')
+    has_cats = request.data.get('has_cats', False)
+    has_dogs = request.data.get('has_dogs', False)
+    has_children = request.data.get('has_children', False)
 
-    if account_type is not None \
-            and email is not None\
+    if email is not None \
             and first_name is not None \
             and last_name is not None \
             and password is not None:
-
-        if account_type != 'profile':
-            return Response(
-                {'message': 'Invalid account type. Valid values are \'profile\''},
-                status=status.HTTP_400_BAD_REQUEST
-            )
 
         try:
             new_user = User.objects.create_user(
@@ -62,7 +57,10 @@ def register_user(request):
             Profile.objects.create(
                 user=new_user,
                 bio=bio,
-                image=image
+                image=image,
+                has_cats=has_cats,
+                has_dogs=has_dogs,
+                has_children=has_children
             )
 
         except IntegrityError:
@@ -75,4 +73,4 @@ def register_user(request):
         data = {'token': token.key}
         return Response(data)
 
-    return Response({'message': 'You must provide email, password, first_name, last_name and account_type'}, status=status.HTTP_400_BAD_REQUEST)
+    return Response({'message': 'You must provide email, password, first_name, and last_name'}, status=status.HTTP_400_BAD_REQUEST)
