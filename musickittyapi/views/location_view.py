@@ -2,7 +2,21 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from musickittyapi.models import Location
+from musickittyapi.models import Cat, Location
+
+# Cat Serializer
+class CatSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cat
+        fields = ['id', 'name', 'age', 'sex', 'bio', 'image', 'adopted', 'gets_along_with_cats', 'gets_along_with_dogs', 'gets_along_with_children']
+
+# Location Serializer
+class LocationSerializer(serializers.ModelSerializer):
+    cats = CatSerializer(many=True, read_only=True, source='cat_set')  # 'cat_set' is the default reverse lookup name Django gives
+
+    class Meta:
+        model = Location
+        fields = ('id', 'name', 'address', 'phone_number', 'opening_hours', 'closing_hours', 'cats')
 
 class LocationView(ViewSet):
 
@@ -64,8 +78,3 @@ class LocationView(ViewSet):
         
         location.delete()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
-    
-class LocationSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Location
-        fields = ('id', 'name', 'address', 'phone_number', 'opening_hours', 'closing_hours')
