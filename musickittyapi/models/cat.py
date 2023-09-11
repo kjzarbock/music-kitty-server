@@ -12,4 +12,4 @@ class Cat(models.Model):
     gets_along_with_cats = models.BooleanField()
     gets_along_with_dogs = models.BooleanField()
     gets_along_with_children = models.BooleanField()
-    favoried_by = models.ManyToManyField("Profile", through='CatFavorite', related_name="favorited_cats_through")
+    favorited_by = models.ManyToManyField("Profile", through='CatFavorite', related_name="favorited_cats_through")
