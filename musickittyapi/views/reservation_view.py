@@ -95,4 +95,3 @@ class ReservationSerializer(serializers.ModelSerializer):
         model = Reservation
         fields = ('id', 'profile', 'location', 'date', 'time', 'number_of_guests')
 
-    
