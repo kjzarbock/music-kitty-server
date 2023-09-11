@@ -4,6 +4,20 @@ from rest_framework.response import Response
 from rest_framework import serializers, status
 from musickittyapi.models import Product, Location
 
+# Location Serializer
+class LocationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Location
+        fields = ('id', 'name', 'address', 'phone_number', 'opening_hours', 'closing_hours')  # Adjust fields as necessary
+
+# Product Serializer with expanded location information
+class ProductSerializer(serializers.ModelSerializer):
+    location = LocationSerializer(read_only=True)
+
+    class Meta:
+        model = Product
+        fields = ('id', 'description', 'price', 'image', 'location')
+
 class ProductView(ViewSet):
 
     def list(self, request):
@@ -13,7 +27,6 @@ class ProductView(ViewSet):
 
     def retrieve(self, request, pk=None):
         """Handle GET requests for single product
-
         Returns:
             Response -- JSON serialized product record
         """
@@ -28,12 +41,11 @@ class ProductView(ViewSet):
     def create(self, request):
         try:
             location = Location.objects.get(pk=request.data["location"])
-
             product = Product.objects.create(
-                description = request.data["description"],
-                price = request.data["price"],
-                image = request.data["image"],
-                location = location
+                description=request.data["description"],
+                price=request.data["price"],
+                image=request.data["image"],
+                location=location
             )
             serializer = ProductSerializer(product)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -64,8 +76,3 @@ class ProductView(ViewSet):
             return Response({'message': 'Product not found.'}, status=status.HTTP_404_NOT_FOUND)
         product.delete()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
-    
-class ProductSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Product
-        fields = ('id', 'description', 'price', 'image', 'location')

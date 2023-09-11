@@ -22,7 +22,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 class CatSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cat
-        fields = ['id', 'name', 'age', 'sex', 'bio', 'image', 'adopted', 'gets_along_with_cats', 'gets_along_with_dogs', 'gets_along_with_children']
+        fields = ['id', 'name', 'location', 'age', 'sex', 'bio', 'image', 'adopted', 'gets_along_with_cats', 'gets_along_with_dogs', 'gets_along_with_children']
 
 # ProfileAdoption serializer
 class ProfileAdoptionSerializer(serializers.ModelSerializer):
