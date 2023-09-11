@@ -2,6 +2,8 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
+from rest_framework.decorators import action
+from rest_framework.permissions import IsAdminUser
 from musickittyapi.models import Profile
 from django.contrib.auth.models import User
 
@@ -13,26 +15,16 @@ class ProfileView(ViewSet):
         return Response(serializer.data)
 
     def retrieve(self, request, pk=None):
-        """Handle GET requests for single profile
-
-        Returns:
-            Response -- JSON serialized profile record
-        """
         try:
             profile = Profile.objects.get(pk=pk)
+            serialized = ProfileSerializer(profile, context={'request': request})
+            return Response(serialized.data, status=status.HTTP_200_OK)
         except Profile.DoesNotExist:
             return Response({'message': 'Profile not found.'}, status=status.HTTP_404_NOT_FOUND)
         
-        serialized = ProfileSerializer(profile, context={'request': request})
-        return Response(serialized.data, status=status.HTTP_200_OK)
-
     def update(self, request, pk=None):
         try:
             profile = Profile.objects.get(pk=pk)
-        except Profile.DoesNotExist:
-            return Response({'message': 'Profile not found.'}, status=status.HTTP_404_NOT_FOUND)
-        
-        try:
             user = User.objects.get(pk=request.data["user"])
             profile.user = user
             profile.image = request.data["image"]
@@ -41,19 +33,33 @@ class ProfileView(ViewSet):
             profile.has_dogs = request.data["has_dogs"]
             profile.has_children = request.data["has_children"]
             profile.approved_to_adopt = request.data["approved_to_adopt"]
-
             profile.save()
             return Response(None, status=status.HTTP_204_NO_CONTENT)
         except KeyError:
             return Response({'message': 'Invalid request data.'}, status=status.HTTP_400_BAD_REQUEST)
+        except Profile.DoesNotExist:
+            return Response({'message': 'Profile not found.'}, status=status.HTTP_404_NOT_FOUND)
 
     def destroy(self, request, pk=None):
         try:
             profile = Profile.objects.get(pk=pk)
+            profile.delete()
+            return Response(None, status=status.HTTP_204_NO_CONTENT)
         except Profile.DoesNotExist:
             return Response({'message': 'Profile not found.'}, status=status.HTTP_404_NOT_FOUND)
-        profile.delete()
-        return Response(None, status=status.HTTP_204_NO_CONTENT)
+
+    @action(detail=True, methods=['put'], permission_classes=[IsAdminUser])
+    def set_staff_status(self, request, pk=None):
+        try:
+            profile = Profile.objects.get(pk=pk)
+            user = profile.user
+            if user.is_staff:
+                return Response({"message": "User is already a staff member."}, status=status.HTTP_400_BAD_REQUEST)
+            user.is_staff = True
+            user.save()
+            return Response({"message": "User has been granted staff status."}, status=status.HTTP_200_OK)
+        except Profile.DoesNotExist:
+            return Response({"message": "Profile not found."}, status=status.HTTP_404_NOT_FOUND)
     
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -66,4 +72,3 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = ('user', 'image', 'bio', 'has_cats', 'has_dogs', 'has_children', 'approved_to_adopt')
-

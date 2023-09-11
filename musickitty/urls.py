@@ -1,19 +1,3 @@
-"""
-URL configuration for musickitty project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.conf.urls import include
 from django.urls import path
@@ -28,9 +12,15 @@ router.register(r'products', ProductView, 'product')
 router.register(r'profiles', ProfileView, 'profile')
 router.register(r'reservations', ReservationView, 'reservation')
 
+# Extending the URL patterns of the router.
+profile_list = ProfileView.as_view({
+    'put': 'set_staff_status'
+})
+
 urlpatterns = [
     path('register', register_user),
     path('login', login_user),
     path('admin/', admin.site.urls),
+    path('profiles/<int:pk>/set_staff_status/', profile_list, name='set_staff_status'),
     path('', include(router.urls))
 ]
