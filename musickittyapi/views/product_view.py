@@ -8,15 +8,15 @@ from musickittyapi.models import Product, Location
 class LocationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Location
-        fields = ('id', 'name', 'address', 'phone_number', 'opening_hours', 'closing_hours')  # Adjust fields as necessary
+        fields = ('id', 'name', 'address', 'phone_number', 'opening_hours', 'closing_hours') 
 
 # Product Serializer with expanded location information
 class ProductSerializer(serializers.ModelSerializer):
-    location = LocationSerializer(read_only=True)
+    locations = LocationSerializer(many=True, read_only=True)
 
     class Meta:
         model = Product
-        fields = ('id', 'description', 'price', 'image', 'location')
+        fields = ('id', 'description', 'price', 'image', 'locations')
 
 class ProductView(ViewSet):
 
@@ -26,10 +26,6 @@ class ProductView(ViewSet):
         return Response(serializer.data)
 
     def retrieve(self, request, pk=None):
-        """Handle GET requests for single product
-        Returns:
-            Response -- JSON serialized product record
-        """
         try:
             product = Product.objects.get(pk=pk)
         except Product.DoesNotExist:
@@ -40,13 +36,17 @@ class ProductView(ViewSet):
 
     def create(self, request):
         try:
-            location = Location.objects.get(pk=request.data["location"])
+            location_ids = request.data["locations"]  # assuming this is a list of location ids
+            locations = Location.objects.filter(pk__in=location_ids)
+            
             product = Product.objects.create(
                 description=request.data["description"],
                 price=request.data["price"],
-                image=request.data["image"],
-                location=location
+                image=request.data["image"]
             )
+            product.locations.set(locations)
+            product.save()
+
             serializer = ProductSerializer(product)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         except KeyError:
@@ -59,10 +59,13 @@ class ProductView(ViewSet):
             return Response({'message': 'Product not found.'}, status=status.HTTP_404_NOT_FOUND)
         
         try:
+            location_ids = request.data["locations"]
+            locations = Location.objects.filter(pk__in=location_ids)
+            
             product.description = request.data["description"]
             product.price = request.data["price"]
             product.image = request.data["image"]
-            product.location = Location.objects.get(pk=request.data["location"])
+            product.locations.set(locations)
             product.save()
 
             return Response(None, status=status.HTTP_204_NO_CONTENT)
