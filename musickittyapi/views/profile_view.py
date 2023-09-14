@@ -3,11 +3,17 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from rest_framework.decorators import action
-from rest_framework.permissions import IsAdminUser
+from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from musickittyapi.models import Profile
 from django.contrib.auth.models import User
 
 class ProfileView(ViewSet):
+
+    @action(detail=False, methods=['get'], permission_classes=[IsAuthenticated])
+    def me(self, request):
+        profile = Profile.objects.get(user=request.user)
+        serializer = ProfileSerializer(profile, many=False)
+        return Response(serializer.data)
 
     def list(self, request):
         profiles = Profile.objects.all()
@@ -25,8 +31,7 @@ class ProfileView(ViewSet):
     def update(self, request, pk=None):
         try:
             profile = Profile.objects.get(pk=pk)
-            user = User.objects.get(pk=request.data["user"])
-            profile.user = user
+            # Avoiding the user assignment logic, if you want to allow updating of other fields, continue here
             profile.image = request.data["image"]
             profile.bio = request.data["bio"]
             profile.has_cats = request.data["has_cats"]
@@ -64,7 +69,7 @@ class ProfileView(ViewSet):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id','first_name', 'last_name', 'email', 'username')
+        fields = ('id', 'first_name', 'last_name', 'email', 'username')
     
 class ProfileSerializer(serializers.ModelSerializer):
     user = UserSerializer(many=False)
