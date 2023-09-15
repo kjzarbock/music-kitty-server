@@ -19,10 +19,16 @@ profile_list = ProfileView.as_view({
     'put': 'set_staff_status'
 })
 
+profile_me = ProfileView.as_view({
+    'get': 'me'
+})
+
+
 urlpatterns = [
     path('register', register_user),
     path('login', login_user),
     path('admin/', admin.site.urls),
+    path('profiles/me/', profile_me, name='profile_me'),
     path('profiles/<int:pk>/set_staff_status/', profile_list, name='set_staff_status'),
     path('locations/<int:location_id>/cats/', LocationView.as_view({'get': 'cats_by_location'})),
     path('', include(router.urls))
