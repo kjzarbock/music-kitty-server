@@ -8,9 +8,13 @@ from django.contrib.auth.models import User
 class ReservationView(ViewSet):
 
     def list(self, request):
-        reservations = Reservation.objects.all()
+        # Filter reservations by the authenticated user's profile and order by date
+        reservations = Reservation.objects.filter(profile__user=request.user).order_by('date')
+
         serializer = ReservationSerializer(reservations, many=True)
         return Response(serializer.data)
+
+
 
     def retrieve(self, request, pk=None):
         """Handle GET requests for single product
