@@ -51,6 +51,8 @@ class ProfileView(ViewSet):
                 profile.has_dogs = request.data["has_dogs"]
             if 'has_children' in request.data:
                 profile.has_children = request.data["has_children"]
+            if 'approved_to_adopt' in request.data:  # Add this line
+                profile.approved_to_adopt = request.data["approved_to_adopt"]  # And this line
             profile.save()
             return Response(None, status=status.HTTP_204_NO_CONTENT)
         except KeyError:
