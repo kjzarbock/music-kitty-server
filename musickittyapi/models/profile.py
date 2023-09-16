@@ -13,6 +13,6 @@ class Profile(models.Model):
     favorited_cats = models.ManyToManyField(Cat, through='CatFavorite')
 
     @property
-    def is_staff_profile(self):
+    def is_staff(self):
         return self.user.is_staff
 

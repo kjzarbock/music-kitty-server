@@ -5,7 +5,7 @@
         "fields": {
             "location": 1,
             "name": "Olivia",
-            "age": "2 years",
+            "age": 2,
             "sex": "Female",
             "bio": "Friendly and playful",
             "image": "https://i.imgur.com/LIvfKXx.jpg",
@@ -21,7 +21,7 @@
         "fields": {
             "location": 1,
             "name": "Clawlor Swift",
-            "age": "6 months",
+            "age": 6,
             "sex": "Female",
             "bio": "Musically talented",
             "image": "https://i.imgur.com/ESSZRrO.jpg",
@@ -37,7 +37,7 @@
         "fields": {
             "location": 1,
             "name": "August",
-            "age": "3 years",
+            "age": 3,
             "sex": "Male",
             "bio": "Lazy and sweet",
             "image": "https://i.imgur.com/dRk0TYZ.jpg",
@@ -53,7 +53,7 @@
         "fields": {
             "location": 1,
             "name": "Betty",
-            "age": "4 years",
+            "age": 4,
             "sex": "Female",
             "bio": "Loyal and cuddly",
             "image": "https://i.imgur.com/O0oxUSx.jpg",
@@ -69,7 +69,7 @@
         "fields": {
             "location": 1,
             "name": "Benjamin",
-            "age": "6 months",
+            "age": 1,
             "sex": "Male",
             "bio": "Curious",
             "image": "https://i.imgur.com/Dw9lZTN.jpg",
@@ -85,7 +85,7 @@
         "fields": {
             "location": 1,
             "name": "James",
-            "age": "8 months",
+            "age": 1,
             "sex": "Male",
             "bio": "Frisky",
             "image": "whiskers_image_url.jpg",
