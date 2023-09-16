@@ -6,3 +6,4 @@ from .profile_view import ProfileView
 from .reservation_view import ReservationView
 from .cat_favorite_view import CatFavoriteView
 from .profile_adoption_view import ProfileAdoptionView
+from .my_profile_view import MyProfileView
