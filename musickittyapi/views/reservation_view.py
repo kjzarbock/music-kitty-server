@@ -4,13 +4,25 @@ from rest_framework.response import Response
 from rest_framework import serializers, status
 from musickittyapi.models import Reservation, Profile, Location
 from django.contrib.auth.models import User
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 class ReservationView(ViewSet):
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
     def list(self, request):
-        reservations = Reservation.objects.all()
+        # If the user is authenticated and is staff, show all reservations
+        if request.user.is_authenticated and request.user.is_staff:
+            reservations = Reservation.objects.all().order_by('date')
+        elif request.user.is_authenticated:
+            # If the user is authenticated but not staff, filter reservations by their profile
+            reservations = Reservation.objects.filter(profile__user=request.user).order_by('date')
+        else:
+            # If the user is not authenticated, show an empty list or you can handle this differently
+            reservations = []
+
         serializer = ReservationSerializer(reservations, many=True)
         return Response(serializer.data)
+
 
     def retrieve(self, request, pk=None):
         """Handle GET requests for single product
@@ -50,11 +62,10 @@ class ReservationView(ViewSet):
             return Response({'message': 'Reservation not found.'}, status=status.HTTP_404_NOT_FOUND)
         
         try:
-            reservation.profile = Profile.objects.get(pk=request.data["profile"])
             reservation.location = Location.objects.get(pk=request.data["location"])
             reservation.date = request.data["date"]
             reservation.time = request.data["time"]
-            reservation.number_of_guests = request.data["number_of_guests"]
+            reservation.number_of_guests = int(request.data["number_of_guests"])  # Ensure it's an integer
             reservation.save()
 
             return Response(None, status=status.HTTP_204_NO_CONTENT)
@@ -66,8 +77,13 @@ class ReservationView(ViewSet):
             reservation = Reservation.objects.get(pk=pk)
         except Reservation.DoesNotExist:
             return Response({'message': 'Reservation not found.'}, status=status.HTTP_404_NOT_FOUND)
-        reservation.delete()
-        return Response(None, status=status.HTTP_204_NO_CONTENT)
+
+        # Check if the user making the request is the owner of the reservation or a staff member
+        if reservation.profile.user == request.user or request.user.is_staff:
+            reservation.delete()
+            return Response(None, status=status.HTTP_204_NO_CONTENT)
+        else:
+            return Response({'message': 'You do not have permission to delete this reservation.'}, status=status.HTTP_403_FORBIDDEN)
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -94,4 +110,6 @@ class ReservationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reservation
         fields = ('id', 'profile', 'location', 'date', 'time', 'number_of_guests')
+
+
 

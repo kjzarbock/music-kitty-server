@@ -3,7 +3,7 @@ from django.conf.urls import include
 from django.urls import path
 from musickittyapi.views import register_user, login_user
 from rest_framework import routers
-from musickittyapi.views import LocationView, CatView, ProductView, ProfileView, ReservationView, CatFavoriteView, ProfileAdoptionView
+from musickittyapi.views import LocationView, CatView, ProductView, ProfileView, ReservationView, CatFavoriteView, ProfileAdoptionView, MyProfileView
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'locations', LocationView, 'location')
@@ -20,7 +20,8 @@ profile_list = ProfileView.as_view({
 })
 
 profile_me = ProfileView.as_view({
-    'get': 'me'
+    'get': 'me',
+    'put': 'me'
 })
 
 
