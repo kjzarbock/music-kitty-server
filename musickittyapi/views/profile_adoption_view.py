@@ -1,14 +1,21 @@
 from rest_framework import viewsets, status, serializers
 from rest_framework.response import Response
-from musickittyapi.models import ProfileAdoption, Cat, Profile
+from musickittyapi.models import ProfileAdoption, Cat, Profile, Location
 from django.contrib.auth.models import User
 from rest_framework.permissions import IsAuthenticated
+
+
+# Location serializer
+class LocationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Location  
+        fields = ['id', 'name'] 
 
 # User serializer
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'email']
+        fields = ['id', 'username', 'email', 'first_name', 'last_name']
 
 # Profile serializer
 class ProfileSerializer(serializers.ModelSerializer):
@@ -20,6 +27,8 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 # Cat serializer
 class CatSerializer(serializers.ModelSerializer):
+    location = LocationSerializer()
+
     class Meta:
         model = Cat
         fields = ['id', 'name', 'location', 'age', 'sex', 'bio', 'image', 'adopted', 'gets_along_with_cats', 'gets_along_with_dogs', 'gets_along_with_children']
@@ -38,6 +47,15 @@ class ProfileAdoptionView(viewsets.ModelViewSet):
     queryset = ProfileAdoption.objects.select_related('profile', 'cat').all()
     serializer_class = ProfileAdoptionSerializer
     permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        if user.is_staff:
+            return ProfileAdoption.objects.select_related('profile', 'cat').order_by('adoption_date').all()
+        else:
+            return ProfileAdoption.objects.select_related('profile', 'cat').filter(profile=user.profile).order_by('adoption_date')
+
+
 
     def create(self, request, *args, **kwargs):
         profile = request.user.profile  # Get the profile associated with the authenticated user

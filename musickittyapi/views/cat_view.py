@@ -21,7 +21,12 @@ class CatSerializer(serializers.ModelSerializer):
 class CatView(ViewSet):
 
     def list(self, request):
-        cats = Cat.objects.all().prefetch_related('location')  # Optimization
+        location = request.query_params.get('location', None)  # Get the location parameter from the query string
+        if location is not None:
+            cats = Cat.objects.filter(location__name=location).prefetch_related('location')  # Filter by location
+        else:
+            cats = Cat.objects.all().prefetch_related('location')  # Get all cats if no location is specified
+
         serializer = CatSerializer(cats, many=True)
         return Response(serializer.data)
 
