@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from rest_framework.permissions import IsAuthenticated
 
 
+
 # Location serializer
 class LocationSerializer(serializers.ModelSerializer):
     class Meta:
@@ -85,13 +86,31 @@ class ProfileAdoptionView(viewsets.ModelViewSet):
     def destroy(self, request, *args, **kwargs):
         profile = request.user.profile
         profile_adoption_id = kwargs.get('pk')
+        print(f"Deleting adoption record with ID: {profile_adoption_id}")
+        print(f"Kwargs: {kwargs}")
 
         try:
-            adoption_record = ProfileAdoption.objects.get(id=profile_adoption_id, profile=profile)
+            # Attempt to convert the pk to an integer
+            profile_adoption_id = int(profile_adoption_id)
+            print(f"Converted PK to integer: {profile_adoption_id}")
+
+            # Check if the user is staff
+            if request.user.is_staff:
+                adoption_record = ProfileAdoption.objects.get(id=profile_adoption_id)
+            else:
+                adoption_record = ProfileAdoption.objects.get(id=profile_adoption_id, profile=profile)
+
+            print(f"Adoption record found: {adoption_record}")
             adoption_record.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
+
+        except ValueError:
+            print("Invalid adoption record ID")
+            return Response({'error': 'Invalid adoption record ID'}, status=status.HTTP_400_BAD_REQUEST)
         except ProfileAdoption.DoesNotExist:
+            print("Adoption record not found")
             return Response({'error': 'Adoption record not found'}, status=status.HTTP_404_NOT_FOUND)
+
 
     def update(self, request, *args, **kwargs):
         if not request.user.is_staff:
