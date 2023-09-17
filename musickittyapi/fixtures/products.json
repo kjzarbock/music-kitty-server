@@ -6,7 +6,7 @@
             "description": "Cat Dancer",
             "price": 2.00,
             "image": "https://i.imgur.com/91ejCO3.jpg",
-            "locations": [1]
+            "locations": [1,2,5]
         }
     },
     {
@@ -16,7 +16,7 @@
             "description": "Robot Toy",
             "price": 15.00,
             "image": "https://i.imgur.com/Nqr3V9R.jpg",
-            "locations": [1]
+            "locations": [1,2,3,4,5]
         }
     },
     {
@@ -26,7 +26,7 @@
             "description": "Grey Mouse",
             "price": 2.00,
             "image": "https://i.imgur.com/1Vhkve4.jpg",
-            "locations": [1]
+            "locations": [1,5]
         }
     },
     {
@@ -36,7 +36,7 @@
             "description": "Feather Toy",
             "price": 10.00,
             "image": "https://i.imgur.com/okuzcyR.jpg",
-            "locations": [1]
+            "locations": [1,2,4,5]
         }
     },
     {
@@ -46,7 +46,7 @@
             "description": "Spring Toy",
             "price": 12.00,
             "image": "https://i.imgur.com/V7sxqJ3.jpg",
-            "locations": [1]
+            "locations": [1,2,3]
         }
     },
     {
@@ -56,7 +56,7 @@
             "description": "Catnip Mouse",
             "price": 5.00,
             "image": "https://i.imgur.com/wnw3rRq.jpg",
-            "locations": [1,2]
+            "locations": [1,2,3]
         }
     },
     {
@@ -66,7 +66,7 @@
             "description": "Espresso",
             "price": 5.00,
             "image": "https://i.imgur.com/Zc3WISL.jpg",
-            "locations": [1,2]
+            "locations": [1,2,5]
         }
     },
     {
@@ -76,7 +76,7 @@
             "description": "Iced Latte",
             "price": 9.00,
             "image": "https://i.imgur.com/5zbKefm.jpg",
-            "locations": [1,2,3,4]
+            "locations": [1,2,3,4,5]
         }
     },
     {
@@ -96,7 +96,7 @@
             "description": "Latte",
             "price": 7.00,
             "image": "https://i.imgur.com/KWm3PsU.jpg",
-            "locations": [1,2,3,4]
+            "locations": [1,2,3,4,5]
         }
     }
 ]
