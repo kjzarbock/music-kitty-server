@@ -15,46 +15,53 @@ This is the server-side code for the Music Kitty project, built using Python and
 ### Clone the Repository
 
 ```git clone https://github.com/kjzarbock/music-kitty-server.git
-cd music-kitty-server```
-
+cd music-kitty-server
+```
 
 ### Set Up Virtual Environment
 
 - We use Pipenv to manage dependencies and virtual environments. If you don't have Pipenv installed, you can install it using pip:
 
-pip install pipenv
+```pip install pipenv
+```
 
 - Then, set up the virtual environment:
 
-pipenv install
+```pipenv install
+```
 
 - This will install all the required packages listed in 'Pipfile'
 
 ### Activate Virtual Environment
 
-- pipenv shell
+```pipenv shell
+```
 
 ### Run Migrations
 
 - Before running the server, make sure to apply the database migrations:
 
-python manage.py migrate
+```python manage.py migrate
+```
 
 ### Seed the Database
 
 - To seed the database, first give execute permission to the seed script:
 
-chmod u+x seed_database.sh
+```chmod u+x seed_database.sh
+```
 
 - Then run the script: 
 
-./seed_database.sh
+```./seed_database.sh
+```
 
 ### Run the Server 
 
 - To start the development server: 
 
-python manage.py runserver
+```python manage.py runserver
+```
 
 - Now, the server should be running at http://127.0.0.1:8000/.
 
