@@ -16,7 +16,6 @@ This is the server-side code for the Music Kitty project, built using Python and
 
 ```git clone https://github.com/kjzarbock/music-kitty-server.git
 cd music-kitty-server
-```
 
 ### Set Up Virtual Environment
 
@@ -24,7 +23,6 @@ cd music-kitty-server
 
 ```pip install pipenv
 
-```
 
 - Then, set up the virtual environment:
 
