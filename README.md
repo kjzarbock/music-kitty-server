@@ -15,14 +15,13 @@ This is the server-side code for the Music Kitty project, built using Python and
 ### Clone the Repository
 
 ```git clone https://github.com/kjzarbock/music-kitty-server.git
-cd music-kitty-server
+cd music-kitty-server```
 
 ### Set Up Virtual Environment
 
 - We use Pipenv to manage dependencies and virtual environments. If you don't have Pipenv installed, you can install it using pip:
 
-```pip install pipenv
-
+```pip install pipenv```
 
 - Then, set up the virtual environment:
 
@@ -60,7 +59,7 @@ cd music-kitty-server
 - To start the development server: 
 
 ```python manage.py runserver
-```
+
 
 - Now, the server should be running at http://127.0.0.1:8000/.
 
