@@ -9,9 +9,18 @@ from django.contrib.auth.models import User
 
 class ProfileView(ViewSet):
 
-    @action(detail=False, methods=['get'], permission_classes=[IsAuthenticated])
+    @action(detail=False, methods=['get', 'put'], permission_classes=[IsAuthenticated])
     def me(self, request):
         profile = Profile.objects.get(user=request.user)
+        if request.method == 'PUT':
+            # Update the profile fields
+            profile.image = request.data.get("image", profile.image)
+            profile.bio = request.data.get("bio", profile.bio)
+            profile.has_cats = request.data.get("has_cats", profile.has_cats)
+            profile.has_dogs = request.data.get("has_dogs", profile.has_dogs)
+            profile.has_children = request.data.get("has_children", profile.has_children)
+            profile.approved_to_adopt = request.data.get("approved_to_adopt", profile.approved_to_adopt)
+            profile.save()
         serializer = ProfileSerializer(profile, many=False)
         return Response(serializer.data)
 
@@ -31,17 +40,17 @@ class ProfileView(ViewSet):
     def update(self, request, pk=None):
         try:
             profile = Profile.objects.get(pk=pk)
-            # Avoiding the user assignment logic, if you want to allow updating of other fields, continue here
-            profile.image = request.data["image"]
-            profile.bio = request.data["bio"]
-            profile.has_cats = request.data["has_cats"]
-            profile.has_dogs = request.data["has_dogs"]
-            profile.has_children = request.data["has_children"]
-            profile.approved_to_adopt = request.data["approved_to_adopt"]
+            # Update the profile fields
+            profile.image = request.data.get("image", profile.image)
+            profile.bio = request.data.get("bio", profile.bio)
+            profile.has_cats = request.data.get("has_cats", profile.has_cats)
+            profile.has_dogs = request.data.get("has_dogs", profile.has_dogs)
+            profile.has_children = request.data.get("has_children", profile.has_children)
+            profile.approved_to_adopt = request.data.get("approved_to_adopt", profile.approved_to_adopt)
             profile.save()
-            return Response(None, status=status.HTTP_204_NO_CONTENT)
-        except KeyError:
-            return Response({'message': 'Invalid request data.'}, status=status.HTTP_400_BAD_REQUEST)
+            # Serialize and return the updated profile data
+            serializer = ProfileSerializer(profile, context={'request': request})
+            return Response(serializer.data, status=status.HTTP_200_OK)
         except Profile.DoesNotExist:
             return Response({'message': 'Profile not found.'}, status=status.HTTP_404_NOT_FOUND)
 
@@ -71,7 +80,7 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('id', 'first_name', 'last_name', 'email', 'username', 'is_staff')
     
 class ProfileSerializer(serializers.ModelSerializer):
-    user = UserSerializer(many=False)
+    user = UserSerializer(many=False, required=False)
 
     class Meta:
         model = Profile
