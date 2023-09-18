@@ -23,6 +23,7 @@ cd music-kitty-server
 - We use Pipenv to manage dependencies and virtual environments. If you don't have Pipenv installed, you can install it using pip:
 
 ```pip install pipenv
+
 ```
 
 - Then, set up the virtual environment:
