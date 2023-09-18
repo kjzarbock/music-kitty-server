@@ -2,7 +2,13 @@
 
 ## Overview
 
-This is the server-side code for the Music Kitty project, built using Python and Django. Client-side code is available here: https://github.com/kjzarbock/music-kitty.  Wire-frame available here: https://www.canva.com/design/DAFtmjmMwHs/klRHxMsWHYmLlczT7DJsXw/edit and ERD available here: https://dbdiagram.io/d/Music-Kitty-ERD-64f8872002bd1c4a5e14d4da 
+This is the server-side code for the Music Kitty project, built using Python and Django. 
+
+- Client-side code is available here: https://github.com/kjzarbock/music-kitty  
+
+- Wire-frame available here: https://www.canva.com/design/DAFtmjmMwHs/klRHxMsWHYmLlczT7DJsXw/edit  
+
+- ERD available here: https://dbdiagram.io/d/Music-Kitty-ERD-64f8872002bd1c4a5e14d4da 
 
 ## Requirements
 
