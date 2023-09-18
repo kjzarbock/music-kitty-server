@@ -4,7 +4,7 @@ from .location import Location
 class Cat(models.Model):
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
-    age = models.CharField(max_length=255)
+    age = models.IntegerField()
     sex = models.CharField(max_length=255)
     bio = models.TextField()
     image = models.CharField(max_length=255)  # If storing URLs. Consider ImageField if storing actual images.

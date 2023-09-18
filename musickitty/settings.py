@@ -69,7 +69,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOW_METHODS = [
-    "DELETE",  # Add "DELETE" to the list of allowed methods
+    "DELETE",  
     "GET",
     "OPTIONS",
     "PATCH",
@@ -89,7 +89,6 @@ CORS_ALLOW_HEADERS = [
     "x-requested-with",
     "headers"
 ]
-
 
 ROOT_URLCONF = 'musickitty.urls'
 
