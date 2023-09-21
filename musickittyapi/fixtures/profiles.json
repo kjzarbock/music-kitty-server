@@ -70,5 +70,29 @@
             "has_children": false,
             "approved_to_adopt": false
         }
+    },
+    {
+        "model": "musickittyapi.profile",
+        "pk": 7,
+        "fields": {
+            "image": "https://i.imgur.com/wOSzQRr.jpg",
+            "bio": "Staff Member at Music Kitty",
+            "has_cats": true,
+            "has_dogs": true,
+            "has_children": false,
+            "approved_to_adopt": false
+        }
+    },
+    {
+        "model": "musickittyapi.profile",
+        "pk": 8,
+        "fields": {
+            "image": "https://i.imgur.com/neLmBb8.jpg",
+            "bio": "39th President of the United States",
+            "has_cats": true,
+            "has_dogs": false,
+            "has_children": false,
+            "approved_to_adopt": false
+        }
     }
 ]

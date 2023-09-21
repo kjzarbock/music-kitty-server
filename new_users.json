@@ -1,0 +1,146 @@
+[
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$320000$skKMaZQjJwGMIJO1MmeaoP$68b2U4VFPL1ZQYgYmM7sIJUWPDhKCrAJOrdz4MWnLq4=",
+        "last_login": null,
+        "is_superuser": true,
+        "username": "kjzarbock",
+        "first_name": "Katie",
+        "last_name": "Zarbock",
+        "email": "kz@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2022-10-21T21:15:55.764Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$320000$6caQGznxTT5xOWckvjT6QO$YZTdqhVzw5XIXUcA2TrQsZuC4SJGBeFc2OYOIz6j8Lk=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "azarbock",
+        "first_name": "Amy",
+        "last_name": "Zarbock",
+        "email": "az@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2022-10-21T21:16:33.812Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$320000$NKseENHvY06F1AIu2RdtPX$mEuwkQRhvscNYW9ORA68BddrY96oVevnyLz6szhmrO4=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "tswift",
+        "first_name": "Taylor",
+        "last_name": "Swift",
+        "email": "ts@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2022-10-21T21:17:24.322Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$320000$d3OTZFUe5DZje6Kb6rm7zv$5oKmFOAQ2WtJQJ+FCT4tXnkbsL60zQN0OTM4nPQQ69A=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "lwelch",
+        "first_name": "Logan",
+        "last_name": "Welch",
+        "email": "lw@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2022-10-21T21:18:12.946Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$320000$L9WyeeE95squbRZelePsZf$XayBzPujv5CeAnmIzcLL0orBqE3qDpJLuQsy9zOM5rc=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "adessner",
+        "first_name": "Aaron",
+        "last_name": "Dessner",
+        "email": "ad@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2022-10-21T21:18:55.741Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 6,
+    "fields": {
+        "password": "pbkdf2_sha256$320000$iU8LQX1Y1DxUjhddsV7FR7$AAvT4VAaY7v7hiOGX8/rnuoAkZnj1joW5WOt6kbGC9Q=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "jantonoff",
+        "first_name": "Jack",
+        "last_name": "Antonoff",
+        "email": "ja@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2022-10-21T21:19:24.892Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 7,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$lSOoGmaw1Ht9LlpAB4EvfZ$cUmrsFO6lUVy9glY/DPJSAYUUPCPNB2ux+YPJ4h0U7s=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "admin",
+        "first_name": "Admin",
+        "last_name": "User",
+        "email": "admin@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2023-09-21T14:37:53.067Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 8,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$RVfDgRPMHOR5vr1mK0vjAO$b+GNUzCXRZHWyuVzQT/GTzqH1ak0gxfKDG3Ohpbol0E=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "jimmy",
+        "first_name": "Jimmy",
+        "last_name": "Carter",
+        "email": "jimmy@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2023-09-21T14:55:33.377Z",
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]

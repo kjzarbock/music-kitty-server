@@ -1,6 +1,6 @@
 UPDATE auth_user
 SET is_staff = 1
-WHERE username = 'wilson';
+WHERE username = 'admin';
 
 UPDATE musickittyapi_cat
 SET image = 'https://i.imgur.com/uk2wFzh.jpg'

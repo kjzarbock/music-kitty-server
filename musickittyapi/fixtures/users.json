@@ -106,5 +106,41 @@
             "groups": [],
             "user_permissions": []
         }
+    },
+    {
+        "model": "auth.user",
+        "pk": 7,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$lSOoGmaw1Ht9LlpAB4EvfZ$cUmrsFO6lUVy9glY/DPJSAYUUPCPNB2ux+YPJ4h0U7s=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "admin",
+            "first_name": "Admin",
+            "last_name": "User",
+            "email": "admin@gmail.com",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2023-09-21T14:37:53.067Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 8,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$RVfDgRPMHOR5vr1mK0vjAO$b+GNUzCXRZHWyuVzQT/GTzqH1ak0gxfKDG3Ohpbol0E=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "jimmy",
+            "first_name": "Jimmy",
+            "last_name": "Carter",
+            "email": "jimmy@gmail.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2023-09-21T14:55:33.377Z",
+            "groups": [],
+            "user_permissions": []
+        }
     }
 ]
